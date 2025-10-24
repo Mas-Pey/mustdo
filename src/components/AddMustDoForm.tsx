@@ -13,7 +13,7 @@ export default function AddMustDoForm({onSubmit}: AddMustDoFormProps) {
         if (!input.trim()) return
 
         onSubmit(input)
-        setInput("asu")
+        setInput("")
     }
 
     return (
