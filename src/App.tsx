@@ -1,38 +1,16 @@
-import { useState } from "react"
-import { dummyData } from "./data/dummy"
 import AddMustDoForm from "./components/AddMustDoForm"
 import MustDoList from "./components/MustDoList"
 import MustDoSummary from "./components/MustDoSummary"
+import useMustDo from "./hooks/useMustDo"
 
 function App() {
-  const [mustdo, setMustDo] = useState(dummyData)
-
-  function setMustdoCompleted(id: number, completed: boolean) {
-    setMustDo((prevMustDo) =>
-      prevMustDo.map(list => list.id === id ? { ...list, completed } : list)
-    )
-  }
-
-  function addMustDo(title: string) {
-    setMustDo((prevMustDo) => [
-      {
-        id: Date.now(),
-        title,
-        completed: false
-      },
-      ...prevMustDo
-    ])
-  }
-
-  function deleteMustDo(id: number) {
-    setMustDo((prevMustDo) =>
-      prevMustDo.filter(list => list.id !== id))
-  }
-
-  function deleteAllMustDo() {
-    setMustDo((prevMustDo) => 
-      prevMustDo.filter(list => !list.completed))
-  }
+  const {
+    mustdo,
+    setMustdoCompleted,
+    addMustDo,
+    deleteMustDo,
+    deleteAllMustDo
+  } = useMustDo()
 
   return (
     <main className="py-10 space-y-0.5 bg-green-900 not-dark:bg-green-200 h-screen overflow-y-auto">
