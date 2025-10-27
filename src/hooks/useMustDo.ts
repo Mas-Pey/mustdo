@@ -1,8 +1,18 @@
-import { useState } from "react"
+import { useEffect, useState } from "react"
 import { dummyData } from "../data/dummy"
+import type { MustDo } from "../types/mustdo"
 
 export default function useMustDo() {
-    const [mustdo, setMustDo] = useState(dummyData)
+    const [mustdo, setMustDo] = useState(() => {
+        const nowMustDo: MustDo[] = JSON.parse(
+            localStorage.getItem("mustdo") || "[]"
+        )
+        return nowMustDo.length > 0 ? nowMustDo : dummyData
+    })
+
+    useEffect(() => {
+        localStorage.setItem("mustdo", JSON.stringify(mustdo))
+    }, [mustdo])
 
     function setMustdoCompleted(id: number, completed: boolean) {
         setMustDo((prevMustDo) =>
