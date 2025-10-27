@@ -32,6 +32,9 @@ Perfect for learning modern frontend stack while building a useful daily task tr
 
 ## 🎬 Demo
 
+### Live Demo
+Try it online: [MustDo Live](https://mas-pey.github.io/mustdo/)
+
 ### Screenshot
 <p align="center">
   <img src="./public/screenshot.png" alt="MustDo Screenshot" width="500"/>
